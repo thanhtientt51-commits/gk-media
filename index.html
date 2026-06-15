@@ -5,111 +5,296 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>公考新媒体文案助手</title>
 <style>
-:root{--bg:#0f172a;--card:#1e293b;--accent:#6366f1;--text:#e2e8f0;--sub:#94a3b8;--border:#334155}
+:root {
+  --bg: #0a0a1a;
+  --card: #13132b;
+  --card2: #1a1a3e;
+  --accent: #6366f1;
+  --accent2: #a855f7;
+  --text: #e8ecff;
+  --sub: #8892b0;
+  --border: rgba(99,102,241,.12);
+  --radius: 14px;
+  --shadow: 0 4px 32px rgba(0,0,0,.4);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;background-image:radial-gradient(ellipse at 30% 0%,rgba(99,102,241,.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 100%,rgba(99,102,241,.08) 0%,transparent 50%)}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,.15), transparent),
+    radial-gradient(ellipse 40% 50% at 90% 100%, rgba(168,85,247,.08), transparent);
+  background-attachment: fixed;
+}
 
-.header{background:rgba(30,41,59,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 24px;text-align:center;position:sticky;top:0;z-index:10}
-.header h1{font-size:1.3em;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.header p{font-size:.75em;color:var(--sub);margin-top:4px}
+/* Header */
+.header {
+  padding: 28px 24px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.header .logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+}
+.header .logo-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3em;
+  box-shadow: 0 0 24px rgba(99,102,241,.35);
+}
+.header h1 {
+  font-size: 1.5em; font-weight: 800;
+  background: linear-gradient(135deg, #c7d2fe, #e9d5ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: -.3px;
+}
+.header .sub {
+  font-size: .78em; color: var(--sub);
+}
 
-.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;min-height:calc(100vh - 80px)}
+/* Layout */
+.layout {
+  max-width: 1440px; margin: 0 auto; padding: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  min-height: calc(100vh - 180px);
+}
 
-.panel{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:20px;overflow-y:auto}
+.panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+}
 
-.panel h2{font-size:.95em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.panel h2 .icon{font-size:1.2em}
+.panel-hd {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-hd h2 { font-size: .9em; font-weight: 700; }
+.panel-hd .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
 
-.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.preset-btn{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:#a5b4fc;padding:8px 14px;border-radius:20px;font-size:.75em;cursor:pointer;transition:.2s;white-space:nowrap}
-.preset-btn:hover{background:rgba(99,102,241,.3);color:#fff}
+/* Preset Cards */
+.preset-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin-bottom: 14px;
+}
+.preset-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative; overflow: hidden;
+}
+.preset-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99,102,241,.15);
+}
+.preset-card:hover::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.preset-card .pc-icon { font-size: 1.4em; margin-bottom: 6px; }
+.preset-card .pc-title { font-size: .78em; font-weight: 700; margin-bottom: 2px; }
+.preset-card .pc-desc { font-size: .66em; color: var(--sub); line-height: 1.4; }
 
-.preset-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.82em;outline:none;margin-bottom:10px;resize:none;font-family:inherit}
-.preset-input:focus{border-color:var(--accent)}
-.preset-input::placeholder{color:#64748b}
+/* Custom input */
+.custom-wrap {
+  display: flex; gap: 8px; margin-bottom: 16px;
+}
+.custom-wrap textarea {
+  flex: 1;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px; color: var(--text); font-size: .8em;
+  outline: none; resize: none; font-family: inherit; line-height: 1.5;
+  transition: .2s;
+}
+.custom-wrap textarea:focus { border-color: var(--accent); }
+.custom-wrap textarea::placeholder { color: #4a5080; }
+.btn-copy {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; border: 0; padding: 12px 18px; border-radius: 10px;
+  font-size: .78em; font-weight: 700; cursor: pointer; white-space: nowrap;
+  transition: .2s; box-shadow: 0 4px 16px rgba(99,102,241,.25);
+}
+.btn-copy:hover { opacity: .9; transform: scale(1.03); }
 
-.copy-btn{background:var(--accent);color:#fff;border:0;padding:8px 18px;border-radius:8px;font-size:.78em;font-weight:600;cursor:pointer;transition:.2s}
-.copy-btn:hover{opacity:.9}
+/* Rules */
+.rules-box {
+  margin-top: auto;
+  background: var(--card2); border-radius: 10px;
+  padding: 14px; border: 1px solid var(--border);
+}
+.rules-box h3 { font-size: .72em; color: var(--sub); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.rule-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.rule-tag {
+  font-size: .66em; padding: 4px 10px; border-radius: 14px;
+  font-weight: 600; white-space: nowrap;
+}
+.rule-red { background: rgba(239,68,68,.12); color: #f87171; border: 1px solid rgba(239,68,68,.2); }
+.rule-yellow { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.2); }
+.rule-green { background: rgba(34,197,94,.12); color: #4ade80; border: 1px solid rgba(34,197,94,.2); }
 
-.rules-section{margin-top:16px}
-.rules-section h3{font-size:.78em;color:var(--sub);margin-bottom:8px}
-.rule-item{display:flex;align-items:flex-start;gap:6px;font-size:.7em;color:var(--sub);padding:4px 0}
-.rule-item .badge{flex-shrink:0;padding:1px 6px;border-radius:4px;font-size:.85em;font-weight:700}
-.badge-red{background:rgba(239,68,68,.2);color:#f87171}
-.badge-yellow{background:rgba(251,191,36,.2);color:#fbbf24}
-.badge-green{background:rgba(34,197,94,.2);color:#4ade80}
+/* AI Panel */
+.ai-frame-wrap {
+  flex: 1; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border); background: #fff;
+}
+.ai-frame-wrap iframe { width: 100%; height: 100%; min-height: 650px; border: 0; }
 
-.iframe-wrap{flex:1;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-.iframe-wrap iframe{width:100%;height:100%;min-height:600px;border:0}
+/* Toast */
+.toast {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: #fff; padding: 10px 24px;
+  border-radius: 20px; font-size: .8em; font-weight: 600;
+  z-index: 999; opacity: 0; pointer-events: none;
+  transition: opacity .3s; box-shadow: 0 4px 20px rgba(99,102,241,.4);
+}
+.toast.show { opacity: 1; }
 
-.footer{text-align:center;padding:16px;color:var(--sub);font-size:.65em;border-top:1px solid var(--border)}
+/* Footer */
+.footer {
+  text-align: center; padding: 20px; color: var(--sub);
+  font-size: .65em; border-top: 1px solid var(--border);
+}
 
-@media(max-width:768px){
-  .layout{grid-template-columns:1fr}
-  .iframe-wrap iframe{min-height:500px}
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; padding: 10px; gap: 12px; }
+  .preset-grid { grid-template-columns: 1fr; }
+  .header { padding: 18px 14px; }
+  .header h1 { font-size: 1.2em; }
+  .ai-frame-wrap iframe { min-height: 500px; }
+  .custom-wrap { flex-direction: column; }
+  .panel { padding: 16px; }
 }
 </style>
 </head>
 <body>
 
+<div class="toast" id="toast">指令已复制 ✓ 请粘贴到右侧AI对话框</div>
+
 <div class="header">
-  <h1>公考新媒体文案助手</h1>
-  <p>小红书爆款 · 抖音脚本 · 视频号旁白 | AI内核驱动</p>
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <h1>公考新媒体文案助手</h1>
+  </div>
+  <div class="sub">小红书爆款 · 抖音脚本 · 视频号旁白 · 智能生成 · 自动合规</div>
 </div>
 
 <div class="layout">
-  <!-- 左侧：控制面板 -->
-  <div class="panel">
-    <h2><span class="icon">快捷指令</span> 一键发送给AI</h2>
 
-    <div class="presets">
-      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，关于江苏省考筛岗，目标人群是应届毕业生，要有共鸣感')">小红书·筛岗帖</button>
-      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，关于怎么对比两个岗位做选择，体现选岗焦虑和解决方法')">小红书·选岗帖</button>
-      <button class="preset-btn" onclick="sendPreset('写一个40秒抖音视频脚本，主题是考公筛岗信息差，要有钩子和共鸣，适合口播')">抖音·筛岗脚本</button>
-      <button class="preset-btn" onclick="sendPreset('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格')">视频号·备考旁白</button>
-      <button class="preset-btn" onclick="sendPreset('帮我写5条小红书评论区引流话术，用于在考公相关帖子下自然引流到主页')">小红书·引流评论</button>
-      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别和选岗策略')">小红书·科普帖</button>
+  <!-- 左侧：指令面板 -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div class="dot"></div>
+      <h2>快捷指令</h2>
     </div>
 
-    <textarea class="preset-input" id="customPrompt" rows="2" placeholder="或在这里输入自定义需求，然后复制粘贴到右侧AI对话框..."></textarea>
-    <button class="copy-btn" onclick="copyPrompt()">复制指令 → 粘贴到右侧AI</button>
+    <div class="preset-grid">
+      <div class="preset-card" onclick="sendPreset('写一篇小红书帖子，关于江苏省考筛岗，目标人群是应届毕业生，要有共鸣感和信息差钩子',this)">
+        <div class="pc-icon">📕</div>
+        <div class="pc-title">小红书 · 筛岗帖</div>
+        <div class="pc-desc">应届生视角，信息差钩子，选岗焦虑共鸣</div>
+      </div>
+      <div class="preset-card" onclick="sendPreset('写一篇小红书帖子，关于怎么对比两个公务员岗位做选择，体现纠结心理和最终解决方法',this)">
+        <div class="pc-icon">📘</div>
+        <div class="pc-title">小红书 · 选岗纠结帖</div>
+        <div class="pc-desc">两个岗位难取舍，情感共鸣+理性决策</div>
+      </div>
+      <div class="preset-card" onclick="sendPreset('写一个40秒抖音视频脚本，主题是考公筛岗信息差，90%的人第一步就漏了。要有画面描述+旁白+发布文案',this)">
+        <div class="pc-icon">🎬</div>
+        <div class="pc-title">抖音 · 筛岗脚本</div>
+        <div class="pc-desc">快节奏，前3秒钩子，数据冲击</div>
+      </div>
+      <div class="preset-card" onclick="sendPreset('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格，引发转发',this)">
+        <div class="pc-icon">🎙️</div>
+        <div class="pc-title">视频号 · 备考旁白</div>
+        <div class="pc-desc">情感叙事，利他收尾，转发驱动</div>
+      </div>
+      <div class="preset-card" onclick="sendPreset('帮我写5条小红书评论区引流话术，在考公相关帖子下自然引起注意，不直接导流但要让人想点进主页',this)">
+        <div class="pc-icon">💬</div>
+        <div class="pc-title">小红书 · 引流评论</div>
+        <div class="pc-desc">自然话术，干货先留人，主页引流</div>
+      </div>
+      <div class="preset-card" onclick="sendPreset('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别、薪资对比和选岗策略，数据要硬核但表达要通俗',this)">
+        <div class="pc-icon">📊</div>
+        <div class="pc-title">小红书 · 科普干货帖</div>
+        <div class="pc-desc">ABC三类对比，薪资数据，实用收藏</div>
+      </div>
+    </div>
 
-    <div class="rules-section">
-      <h3>平台规则速查</h3>
-      <div class="rule-item"><span class="badge badge-red">禁用</span> 最、第一、顶级、100%、包过、保过、秒杀</div>
-      <div class="rule-item"><span class="badge badge-red">禁用</span> 加微信、VX、私信领、扣1、看主页</div>
-      <div class="rule-item"><span class="badge badge-yellow">注意</span> AI生成内容需标注"AI辅助创作"</div>
-      <div class="rule-item"><span class="badge badge-yellow">注意</span> 薪资数据标注"基于公开信息估算，仅供参考"</div>
-      <div class="rule-item"><span class="badge badge-green">技巧</span> 标题15字内，正文口语化+emoji+短段落</div>
-      <div class="rule-item"><span class="badge badge-green">技巧</span> 抖音前3秒钩子 > 视频号真诚叙事 > 小红书信息差</div>
+    <div class="custom-wrap">
+      <textarea id="customPrompt" rows="2" placeholder="输入自定义需求，例如：写一篇关于苏南苏北薪资差距的帖子..."></textarea>
+      <button class="btn-copy" onclick="copyPrompt()">复制指令<br>→ AI对话</button>
+    </div>
+
+    <div class="rules-box">
+      <h3>合规速查</h3>
+      <div class="rule-row">
+        <span class="rule-tag rule-red">禁用：最/第一/100%/包过</span>
+        <span class="rule-tag rule-red">禁用：加微信/私信/扣1</span>
+        <span class="rule-tag rule-yellow">标注：AI辅助创作</span>
+        <span class="rule-tag rule-yellow">标注：薪资仅供参考</span>
+        <span class="rule-tag rule-green">标题≤15字+emoji</span>
+        <span class="rule-tag rule-green">前3秒钩子致胜</span>
+      </div>
     </div>
   </div>
 
   <!-- 右侧：豆包AI -->
-  <div class="panel" style="padding:8px">
-    <div class="iframe-wrap">
+  <div class="panel" style="padding:10px">
+    <div class="ai-frame-wrap">
       <iframe src="https://doubao.com/bot/f4x0UZdQ" frameborder="0" allow="clipboard-write"></iframe>
     </div>
   </div>
+
 </div>
 
-<div class="footer">AI内核由豆包驱动 | 平台规则基于2026年公开信息整理 | 仅供机构内部使用</div>
+<div class="footer">AI内核由豆包驱动 · 平台规则2026年版 · 仅供机构内部使用</div>
 
 <script>
-function sendPreset(text) {
+function sendPreset(text, el) {
+  if (el) { el.style.borderColor = 'var(--accent2)'; setTimeout(function(){ el.style.borderColor = ''; }, 600); }
   document.getElementById('customPrompt').value = text;
   copyPrompt();
 }
 
 function copyPrompt() {
   var text = document.getElementById('customPrompt').value.trim();
-  if (!text) { alert('请先输入或选择指令'); return; }
+  if (!text) { showToast('请先选择快捷指令或输入自定义内容'); return; }
   navigator.clipboard.writeText(text).then(function() {
-    alert('指令已复制！\n\n请粘贴到右侧豆包对话框发送。\n如果右侧面板没加载，点击豆包内的输入框粘贴即可。');
+    showToast('指令已复制 ✓ 请点击右侧豆包对话框，粘贴发送');
   }).catch(function() {
-    prompt('请手动复制以下指令：', text);
+    prompt('请手动复制指令：', text);
   });
 }
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2500);
+}
+
+document.getElementById('customPrompt').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && e.ctrlKey) { copyPrompt(); }
+});
 </script>
 
 </body>
