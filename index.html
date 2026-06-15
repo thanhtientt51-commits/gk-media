@@ -48,7 +48,7 @@ body {
 .section-title { font-size: .75em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sub); margin-bottom: 16px; }
 
 /* Presets */
-.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 .card {
   background: var(--card); border-radius: 18px; padding: 24px 20px;
   cursor: pointer; transition: all .3s cubic-bezier(.25,.1,.25,1);
@@ -196,6 +196,46 @@ body {
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">ABC三类科普</div>
         <div class="c-desc">薪资数据 · 考试区别 · 收藏实用</div>
+      </div>
+      <div class="card" onclick="sendPreset('写一篇小红书帖子，介绍江苏省苏南苏北公务员薪资差距，要有具体城市数据对比，引发讨论',this)">
+        <div class="c-icon-wrap c-icon-red">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <span class="c-tag tag-red">热门</span>
+        <div class="c-name">薪资对比帖</div>
+        <div class="c-desc">苏南vs苏北 · 真实数据 · 引发讨论</div>
+      </div>
+      <div class="card" onclick="sendPreset('写一篇小红书帖子，关于考公人要不要报班，客观分析自学和报班的利弊，不要推销',this)">
+        <div class="c-icon-wrap c-icon-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <span class="c-tag tag-blue">小红书</span>
+        <div class="c-name">报班vs自学</div>
+        <div class="c-desc">客观分析 · 不贩卖焦虑 · 实用建议</div>
+      </div>
+      <div class="card" onclick="sendPreset('写一个40秒抖音视频脚本，主题是公务员和事业单位怎么选，薪资、稳定性、考试难度逐个比',this)">
+        <div class="c-icon-wrap c-icon-purple">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <span class="c-tag tag-purple">抖音</span>
+        <div class="c-name">公职对比脚本</div>
+        <div class="c-desc">公务员vs事业编 · 数据对比 · 快速决策</div>
+      </div>
+      <div class="card" onclick="sendPreset('写一个55秒视频号旁白，主题是为什么我建议你先筛岗再复习，劝备考的朋友不要盲目开始',this)">
+        <div class="c-icon-wrap c-icon-green">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+        </div>
+        <span class="c-tag tag-purple">视频号</span>
+        <div class="c-name">先筛岗再复习</div>
+        <div class="c-desc">备考顺序建议 · 利他分享 · 转发驱动</div>
+      </div>
+      <div class="card" onclick="sendPreset('帮我写5条小红书评论区互动话术，回复考公相关帖子，既能提供价值又能自然让人关注',this)">
+        <div class="c-icon-wrap c-icon-amber">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span class="c-tag tag-blue">小红书</span>
+        <div class="c-name">互动话术</div>
+        <div class="c-desc">自然回复 · 提供价值 · 涨粉转化</div>
       </div>
     </div>
     <div class="rules">
