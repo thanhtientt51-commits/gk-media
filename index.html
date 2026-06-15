@@ -154,16 +154,6 @@ body {
   overflow: hidden; display: flex; flex-direction: column;
 }
 .ai-panel iframe { flex: 1; width: 100%; min-height: 700px; border: 0; }
-.ai-loading {
-  flex: 1; display: flex; align-items: center; justify-content: center;
-  min-height: 700px;
-}
-.ai-loading-inner {
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  color: var(--sub); font-size: .78em;
-}
-.ai-loading-inner svg { animation: spin 2s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Toast */
 .toast {
@@ -310,14 +300,8 @@ body {
   <!-- 右侧 -->
   <div>
     <div class="section-title">AI 对话</div>
-    <div class="ai-panel" id="aiPanel">
-      <div class="ai-loading" id="aiLoading">
-        <div class="ai-loading-inner">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>AI 引擎加载中...</span>
-        </div>
-      </div>
-      <iframe id="aiFrame" src="" frameborder="0" allow="clipboard-write" style="opacity:0;transition:opacity .3s"></iframe>
+    <div class="ai-panel">
+      <iframe src="https://doubao.com/bot/f4x0UZdQ" frameborder="0" allow="clipboard-write"></iframe>
     </div>
   </div>
 
@@ -352,16 +336,6 @@ document.getElementById('customPrompt').addEventListener('keydown', function(e) 
   if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { copyPrompt(); }
 });
 
-// 延迟加载 iframe，避免豆包图标闪现
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('aiFrame').src = 'https://doubao.com/bot/f4x0UZdQ';
-    document.getElementById('aiFrame').onload = function() {
-      document.getElementById('aiLoading').style.display = 'none';
-      document.getElementById('aiFrame').style.opacity = '1';
-    };
-  }, 600);
-});
 </script>
 
 </body>
