@@ -317,7 +317,7 @@ body {
           <span>AI 引擎加载中...</span>
         </div>
       </div>
-      <iframe id="aiFrame" src="" frameborder="0" allow="clipboard-write"></iframe>
+      <iframe id="aiFrame" src="" frameborder="0" allow="clipboard-write" style="opacity:0;transition:opacity .3s"></iframe>
     </div>
   </div>
 
@@ -358,6 +358,7 @@ window.addEventListener('load', function() {
     document.getElementById('aiFrame').src = 'https://doubao.com/bot/f4x0UZdQ';
     document.getElementById('aiFrame').onload = function() {
       document.getElementById('aiLoading').style.display = 'none';
+      document.getElementById('aiFrame').style.opacity = '1';
     };
   }, 600);
 });
