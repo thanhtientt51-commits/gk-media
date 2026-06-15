@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公考新媒体文案助手</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--accent:#6366f1;--text:#e2e8f0;--sub:#94a3b8;--border:#334155}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;background-image:radial-gradient(ellipse at 30% 0%,rgba(99,102,241,.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 100%,rgba(99,102,241,.08) 0%,transparent 50%)}
+
+.header{background:rgba(30,41,59,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 24px;text-align:center;position:sticky;top:0;z-index:10}
+.header h1{font-size:1.3em;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{font-size:.75em;color:var(--sub);margin-top:4px}
+
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;min-height:calc(100vh - 80px)}
+
+.panel{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:20px;overflow-y:auto}
+
+.panel h2{font-size:.95em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel h2 .icon{font-size:1.2em}
+
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.preset-btn{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);color:#a5b4fc;padding:8px 14px;border-radius:20px;font-size:.75em;cursor:pointer;transition:.2s;white-space:nowrap}
+.preset-btn:hover{background:rgba(99,102,241,.3);color:#fff}
+
+.preset-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:.82em;outline:none;margin-bottom:10px;resize:none;font-family:inherit}
+.preset-input:focus{border-color:var(--accent)}
+.preset-input::placeholder{color:#64748b}
+
+.copy-btn{background:var(--accent);color:#fff;border:0;padding:8px 18px;border-radius:8px;font-size:.78em;font-weight:600;cursor:pointer;transition:.2s}
+.copy-btn:hover{opacity:.9}
+
+.rules-section{margin-top:16px}
+.rules-section h3{font-size:.78em;color:var(--sub);margin-bottom:8px}
+.rule-item{display:flex;align-items:flex-start;gap:6px;font-size:.7em;color:var(--sub);padding:4px 0}
+.rule-item .badge{flex-shrink:0;padding:1px 6px;border-radius:4px;font-size:.85em;font-weight:700}
+.badge-red{background:rgba(239,68,68,.2);color:#f87171}
+.badge-yellow{background:rgba(251,191,36,.2);color:#fbbf24}
+.badge-green{background:rgba(34,197,94,.2);color:#4ade80}
+
+.iframe-wrap{flex:1;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.iframe-wrap iframe{width:100%;height:100%;min-height:600px;border:0}
+
+.footer{text-align:center;padding:16px;color:var(--sub);font-size:.65em;border-top:1px solid var(--border)}
+
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr}
+  .iframe-wrap iframe{min-height:500px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>公考新媒体文案助手</h1>
+  <p>小红书爆款 · 抖音脚本 · 视频号旁白 | AI内核驱动</p>
+</div>
+
+<div class="layout">
+  <!-- 左侧：控制面板 -->
+  <div class="panel">
+    <h2><span class="icon">快捷指令</span> 一键发送给AI</h2>
+
+    <div class="presets">
+      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，关于江苏省考筛岗，目标人群是应届毕业生，要有共鸣感')">小红书·筛岗帖</button>
+      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，关于怎么对比两个岗位做选择，体现选岗焦虑和解决方法')">小红书·选岗帖</button>
+      <button class="preset-btn" onclick="sendPreset('写一个40秒抖音视频脚本，主题是考公筛岗信息差，要有钩子和共鸣，适合口播')">抖音·筛岗脚本</button>
+      <button class="preset-btn" onclick="sendPreset('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格')">视频号·备考旁白</button>
+      <button class="preset-btn" onclick="sendPreset('帮我写5条小红书评论区引流话术，用于在考公相关帖子下自然引流到主页')">小红书·引流评论</button>
+      <button class="preset-btn" onclick="sendPreset('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别和选岗策略')">小红书·科普帖</button>
+    </div>
+
+    <textarea class="preset-input" id="customPrompt" rows="2" placeholder="或在这里输入自定义需求，然后复制粘贴到右侧AI对话框..."></textarea>
+    <button class="copy-btn" onclick="copyPrompt()">复制指令 → 粘贴到右侧AI</button>
+
+    <div class="rules-section">
+      <h3>平台规则速查</h3>
+      <div class="rule-item"><span class="badge badge-red">禁用</span> 最、第一、顶级、100%、包过、保过、秒杀</div>
+      <div class="rule-item"><span class="badge badge-red">禁用</span> 加微信、VX、私信领、扣1、看主页</div>
+      <div class="rule-item"><span class="badge badge-yellow">注意</span> AI生成内容需标注"AI辅助创作"</div>
+      <div class="rule-item"><span class="badge badge-yellow">注意</span> 薪资数据标注"基于公开信息估算，仅供参考"</div>
+      <div class="rule-item"><span class="badge badge-green">技巧</span> 标题15字内，正文口语化+emoji+短段落</div>
+      <div class="rule-item"><span class="badge badge-green">技巧</span> 抖音前3秒钩子 > 视频号真诚叙事 > 小红书信息差</div>
+    </div>
+  </div>
+
+  <!-- 右侧：豆包AI -->
+  <div class="panel" style="padding:8px">
+    <div class="iframe-wrap">
+      <iframe src="https://doubao.com/bot/f4x0UZdQ" frameborder="0" allow="clipboard-write"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="footer">AI内核由豆包驱动 | 平台规则基于2026年公开信息整理 | 仅供机构内部使用</div>
+
+<script>
+function sendPreset(text) {
+  document.getElementById('customPrompt').value = text;
+  copyPrompt();
+}
+
+function copyPrompt() {
+  var text = document.getElementById('customPrompt').value.trim();
+  if (!text) { alert('请先输入或选择指令'); return; }
+  navigator.clipboard.writeText(text).then(function() {
+    alert('指令已复制！\n\n请粘贴到右侧豆包对话框发送。\n如果右侧面板没加载，点击豆包内的输入框粘贴即可。');
+  }).catch(function() {
+    prompt('请手动复制以下指令：', text);
+  });
+}
+</script>
+
+</body>
+</html>
