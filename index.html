@@ -19,10 +19,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased; line-height: 1.5;
 }
 
 /* Nav */
@@ -30,13 +28,11 @@ body {
   position: sticky; top: 0; z-index: 100;
   background: rgba(245,245,247,.8); backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
+  border-bottom: 1px solid var(--border); padding: 0 24px;
 }
 .nav-inner {
   max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 52px;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
 }
 .nav-logo {
   display: flex; align-items: center; gap: 8px;
@@ -85,36 +81,47 @@ body {
   max-width: 1200px; margin: 0 auto; padding: 0 24px 48px;
   display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
 }
-
 .section-title {
   font-size: .75em; font-weight: 700; text-transform: uppercase;
   letter-spacing: 1px; color: var(--sub); margin-bottom: 16px;
 }
 
-/* Preset Cards */
-.card-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  margin-bottom: 16px;
-}
+/* ===== Icon Styles ===== */
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 .card {
   background: var(--card); border-radius: 16px;
   padding: 20px 18px; cursor: pointer; transition: all .3s cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   position: relative; overflow: hidden;
 }
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(88,101,242,.2);
-}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: rgba(88,101,242,.2); }
 .card:active { transform: scale(.98); }
-.card .c-icon { font-size: 1.6em; margin-bottom: 8px; display: block; }
+
+.card .c-icon-wrap {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+}
+.card .c-icon-wrap svg { width: 18px; height: 18px; }
+
+.c-icon-red { background: #fff2f0; }
+.c-icon-red svg { color: #e5484d; stroke: #e5484d; }
+.c-icon-blue { background: #f0f4ff; }
+.c-icon-blue svg { color: #5865f2; stroke: #5865f2; }
+.c-icon-purple { background: #f6f0ff; }
+.c-icon-purple svg { color: #8b5cf6; stroke: #8b5cf6; }
+.c-icon-green { background: #f0fdf4; }
+.c-icon-green svg { color: #16a34a; stroke: #16a34a; }
+.c-icon-amber { background: #fffbeb; }
+.c-icon-amber svg { color: #d97706; stroke: #d97706; }
+.c-icon-teal { background: #f0fdfa; }
+.c-icon-teal svg { color: #0d9488; stroke: #0d9488; }
+
 .card .c-name { font-size: .8em; font-weight: 700; margin-bottom: 3px; letter-spacing: -.2px; }
 .card .c-desc { font-size: .66em; color: var(--sub); line-height: 1.4; }
 .card .c-tag {
   position: absolute; top: 14px; right: 14px;
-  font-size: .6em; font-weight: 600; padding: 3px 8px;
-  border-radius: 10px;
+  font-size: .6em; font-weight: 600; padding: 3px 8px; border-radius: 10px;
 }
 .tag-red { background: #fff2f0; color: #e5484d; }
 .tag-blue { background: #f0f4ff; color: #5865f2; }
@@ -134,14 +141,14 @@ body {
 }
 .prompt-box textarea::placeholder { color: #c0c0c8; }
 .btn-send {
-  flex-shrink: 0;
-  width: 44px; height: 44px; border-radius: 50%;
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
   background: linear-gradient(135deg, #5865f2, #8b5cf6);
   border: 0; color: #fff; font-size: 1.1em; cursor: pointer;
   transition: all .2s; box-shadow: 0 4px 14px rgba(88,101,242,.3);
   display: flex; align-items: center; justify-content: center;
 }
 .btn-send:hover { transform: scale(1.06); }
+.btn-send svg { width: 18px; height: 18px; }
 
 /* Rules */
 .rules {
@@ -150,10 +157,7 @@ body {
 }
 .rules h4 { font-size: .68em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sub); margin-bottom: 12px; }
 .rules-row { display: flex; flex-wrap: wrap; gap: 6px; }
-.rules-row span {
-  font-size: .64em; padding: 4px 10px; border-radius: 8px;
-  font-weight: 600; letter-spacing: -.1px;
-}
+.rules-row span { font-size: .64em; padding: 4px 10px; border-radius: 8px; font-weight: 600; letter-spacing: -.1px; }
 .r-do { background: #f0fdf4; color: #16a34a; }
 .r-dont { background: #fef2f2; color: #dc2626; }
 .r-warn { background: #fffbeb; color: #d97706; }
@@ -164,9 +168,7 @@ body {
   border: 1px solid var(--border); box-shadow: var(--shadow);
   overflow: hidden; display: flex; flex-direction: column;
 }
-.ai-panel iframe {
-  flex: 1; width: 100%; min-height: 700px; border: 0;
-}
+.ai-panel iframe { flex: 1; width: 100%; min-height: 700px; border: 0; }
 
 /* Toast */
 .toast {
@@ -217,38 +219,73 @@ body {
     <div class="section-title">快捷指令</div>
 
     <div class="card-grid">
+      <!-- 1. 小红书筛岗 -->
       <div class="card" onclick="send('写一篇小红书帖子，关于江苏省考筛岗，目标人群是应届毕业生，要有共鸣感和信息差钩子',this)">
-        <span class="c-icon">📕</span>
+        <div class="c-icon-wrap c-icon-red">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
         <span class="c-tag tag-red">热门</span>
         <div class="c-name">筛岗共鸣帖</div>
         <div class="c-desc">信息差钩子 · 选岗焦虑 · 应届生视角</div>
       </div>
+
+      <!-- 2. 小红书选岗纠结 -->
       <div class="card" onclick="send('写一篇小红书帖子，关于怎么对比两个公务员岗位做选择，体现纠结心理和最终解决方法',this)">
-        <span class="c-icon">📘</span>
+        <div class="c-icon-wrap c-icon-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="15" y2="9"/><circle cx="12" cy="12" r="1"/>
+          </svg>
+        </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">选岗纠结帖</div>
         <div class="c-desc">两岗难取舍 · 情感共鸣 · 理性决策</div>
       </div>
+
+      <!-- 3. 抖音脚本 -->
       <div class="card" onclick="send('写一个40秒抖音视频脚本，主题是考公筛岗信息差，90%的人第一步就漏了。要有画面描述+旁白+发布文案',this)">
-        <span class="c-icon">🎬</span>
+        <div class="c-icon-wrap c-icon-purple">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
         <span class="c-tag tag-purple">抖音</span>
         <div class="c-name">筛岗视频脚本</div>
         <div class="c-desc">快节奏 · 3秒钩子 · 数据冲击</div>
       </div>
+
+      <!-- 4. 视频号旁白 -->
       <div class="card" onclick="send('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格，引发转发',this)">
-        <span class="c-icon">🎙️</span>
+        <div class="c-icon-wrap c-icon-green">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
         <span class="c-tag tag-purple">视频号</span>
         <div class="c-name">备考情感旁白</div>
         <div class="c-desc">温暖叙事 · 利他收尾 · 转发驱动</div>
       </div>
+
+      <!-- 5. 引流评论 -->
       <div class="card" onclick="send('帮我写5条小红书评论区引流话术，在考公相关帖子下自然引起注意，不直接导流但要让人想点进主页',this)">
-        <span class="c-icon">💬</span>
+        <div class="c-icon-wrap c-icon-amber">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">评论区引流</div>
         <div class="c-desc">自然话术 · 干货留人 · 主页导流</div>
       </div>
+
+      <!-- 6. ABC三类科普 -->
       <div class="card" onclick="send('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别、薪资对比和选岗策略，数据要硬核但表达要通俗',this)">
-        <span class="c-icon">📊</span>
+        <div class="c-icon-wrap c-icon-teal">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">ABC三类科普</div>
         <div class="c-desc">薪资数据 · 考试区别 · 收藏实用</div>
@@ -258,7 +295,11 @@ body {
     <div class="section-title">自定义指令</div>
     <div class="prompt-box">
       <textarea id="customPrompt" rows="1" placeholder="输入自定义需求，或点击上方卡片..."></textarea>
-      <button class="btn-send" onclick="copyPrompt()">→</button>
+      <button class="btn-send" onclick="copyPrompt()" title="复制并发送">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
     </div>
 
     <div class="rules">
