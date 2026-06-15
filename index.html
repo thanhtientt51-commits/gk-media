@@ -6,12 +6,8 @@
 <title>公考新媒体文案助手</title>
 <style>
 :root {
-  --bg: #f5f5f7;
-  --card: #ffffff;
-  --text: #1d1d1f;
-  --sub: #86868b;
-  --accent: #5865f2;
-  --border: rgba(0,0,0,.06);
+  --bg: #f5f5f7; --card: #ffffff; --text: #1d1d1f; --sub: #86868b;
+  --accent: #5865f2; --border: rgba(0,0,0,.06);
   --shadow-sm: 0 1px 3px rgba(0,0,0,.04);
   --shadow: 0 4px 20px rgba(0,0,0,.06);
   --shadow-lg: 0 20px 60px rgba(0,0,0,.08);
@@ -30,116 +26,53 @@ body {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border); padding: 0 24px;
 }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; height: 52px;
-}
-.nav-logo {
-  display: flex; align-items: center; gap: 8px;
-  font-size: .9em; font-weight: 700; letter-spacing: -.2px;
-}
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.nav-logo { display: flex; align-items: center; gap: 8px; font-size: .9em; font-weight: 700; letter-spacing: -.2px; }
 .nav-logo .icon {
-  width: 28px; height: 28px;
-  background: linear-gradient(135deg, #5865f2, #8b5cf6);
+  width: 28px; height: 28px; background: linear-gradient(135deg, #5865f2, #8b5cf6);
   border-radius: 7px; display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: .85em;
 }
-.nav-status {
-  display: flex; align-items: center; gap: 6px;
-  font-size: .7em; color: var(--sub);
-}
-.nav-status .live {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #34c759; box-shadow: 0 0 6px rgba(52,199,89,.5);
-}
+.nav-status { display: flex; align-items: center; gap: 6px; font-size: .7em; color: var(--sub); }
+.nav-status .live { width: 6px; height: 6px; border-radius: 50%; background: #34c759; box-shadow: 0 0 6px rgba(52,199,89,.5); }
 
 /* Hero */
-.hero {
-  text-align: center; padding: 36px 24px 24px;
-}
-.hero h1 {
-  font-size: 1.5em; font-weight: 700; letter-spacing: -.5px; color: var(--text);
-}
+.hero { text-align: center; padding: 36px 24px 24px; }
+.hero h1 { font-size: 1.5em; font-weight: 700; letter-spacing: -.5px; color: var(--text); }
+.hero p { font-size: .82em; color: var(--sub); margin-top: 4px; }
 
-/* Main Grid */
-.main {
-  max-width: 1200px; margin: 0 auto; padding: 0 24px 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-}
-.section-title {
-  font-size: .75em; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1px; color: var(--sub); margin-bottom: 16px;
-}
+/* Main */
+.main { max-width: 1200px; margin: 0 auto; padding: 0 24px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.section-title { font-size: .75em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sub); margin-bottom: 16px; }
 
-/* ===== Icon Styles ===== */
+/* Presets */
 .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 .card {
-  background: var(--card); border-radius: 16px;
-  padding: 20px 18px; cursor: pointer; transition: all .3s cubic-bezier(.25,.1,.25,1);
+  background: var(--card); border-radius: 16px; padding: 20px 18px;
+  cursor: pointer; transition: all .3s cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  position: relative; overflow: hidden;
 }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: rgba(88,101,242,.2); }
 .card:active { transform: scale(.98); }
-
 .card .c-icon-wrap {
   width: 36px; height: 36px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 10px;
 }
 .card .c-icon-wrap svg { width: 18px; height: 18px; }
-
-.c-icon-red { background: #fff2f0; }
-.c-icon-red svg { color: #e5484d; stroke: #e5484d; }
-.c-icon-blue { background: #f0f4ff; }
-.c-icon-blue svg { color: #5865f2; stroke: #5865f2; }
-.c-icon-purple { background: #f6f0ff; }
-.c-icon-purple svg { color: #8b5cf6; stroke: #8b5cf6; }
-.c-icon-green { background: #f0fdf4; }
-.c-icon-green svg { color: #16a34a; stroke: #16a34a; }
-.c-icon-amber { background: #fffbeb; }
-.c-icon-amber svg { color: #d97706; stroke: #d97706; }
-.c-icon-teal { background: #f0fdfa; }
-.c-icon-teal svg { color: #0d9488; stroke: #0d9488; }
-
+.c-icon-red { background: #fff2f0; } .c-icon-red svg { color: #e5484d; stroke: #e5484d; }
+.c-icon-blue { background: #f0f4ff; } .c-icon-blue svg { color: #5865f2; stroke: #5865f2; }
+.c-icon-purple { background: #f6f0ff; } .c-icon-purple svg { color: #8b5cf6; stroke: #8b5cf6; }
+.c-icon-green { background: #f0fdf4; } .c-icon-green svg { color: #16a34a; stroke: #16a34a; }
+.c-icon-amber { background: #fffbeb; } .c-icon-amber svg { color: #d97706; stroke: #d97706; }
+.c-icon-teal { background: #f0fdfa; } .c-icon-teal svg { color: #0d9488; stroke: #0d9488; }
 .card .c-name { font-size: .8em; font-weight: 700; margin-bottom: 3px; letter-spacing: -.2px; }
 .card .c-desc { font-size: .66em; color: var(--sub); line-height: 1.4; }
-.card .c-tag {
-  position: absolute; top: 14px; right: 14px;
-  font-size: .6em; font-weight: 600; padding: 3px 8px; border-radius: 10px;
-}
-.tag-red { background: #fff2f0; color: #e5484d; }
-.tag-blue { background: #f0f4ff; color: #5865f2; }
+.card .c-tag { position: absolute; top: 14px; right: 14px; font-size: .6em; font-weight: 600; padding: 3px 8px; border-radius: 10px; }
+.tag-red { background: #fff2f0; color: #e5484d; } .tag-blue { background: #f0f4ff; color: #5865f2; }
 .tag-purple { background: #f6f0ff; color: #8b5cf6; }
 
-/* Prompt Area */
-.prompt-box {
-  background: var(--card); border-radius: 16px;
-  padding: 16px; border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm); margin-bottom: 16px;
-  display: flex; gap: 10px; align-items: flex-end;
-}
-.prompt-box textarea {
-  flex: 1; border: 0; outline: 0; resize: none;
-  font-size: .8em; font-family: inherit; color: var(--text);
-  background: transparent; line-height: 1.5; min-height: 48px;
-}
-.prompt-box textarea::placeholder { color: #c0c0c8; }
-.btn-send {
-  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, #5865f2, #8b5cf6);
-  border: 0; color: #fff; font-size: 1.1em; cursor: pointer;
-  transition: all .2s; box-shadow: 0 4px 14px rgba(88,101,242,.3);
-  display: flex; align-items: center; justify-content: center;
-}
-.btn-send:hover { transform: scale(1.06); }
-.btn-send svg { width: 18px; height: 18px; }
-
 /* Rules */
-.rules {
-  background: var(--card); border-radius: 16px;
-  padding: 18px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-}
+.rules { background: var(--card); border-radius: 16px; padding: 18px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
 .rules h4 { font-size: .68em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sub); margin-bottom: 12px; }
 .rules-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .rules-row span { font-size: .64em; padding: 4px 10px; border-radius: 8px; font-weight: 600; letter-spacing: -.1px; }
@@ -147,40 +80,54 @@ body {
 .r-dont { background: #fef2f2; color: var(--text); }
 .r-warn { background: #fffbeb; color: var(--text); }
 
-/* AI Panel */
-.ai-panel {
-  background: var(--card); border-radius: 20px;
-  border: 1px solid var(--border); box-shadow: var(--shadow);
-  overflow: hidden; display: flex; flex-direction: column;
+/* Chat Panel */
+.chat-panel {
+  background: var(--card); border-radius: 20px; border: 1px solid var(--border);
+  box-shadow: var(--shadow); display: flex; flex-direction: column; height: 700px; overflow: hidden;
 }
-.ai-panel iframe { flex: 1; width: 100%; min-height: 700px; border: 0; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.chat-msg { max-width: 90%; padding: 14px 18px; border-radius: 16px; font-size: .8em; line-height: 1.6; animation: fadeIn .3s ease; }
+.chat-msg.user { align-self: flex-end; background: linear-gradient(135deg, #5865f2, #8b5cf6); color: #fff; border-bottom-right-radius: 4px; }
+.chat-msg.ai { align-self: flex-start; background: #f3f4f6; color: var(--text); border-bottom-left-radius: 4px; }
+.chat-msg.ai pre { background: #e5e7eb; border-radius: 8px; padding: 12px; overflow-x: auto; font-size: .85em; margin: 8px 0; white-space: pre-wrap; }
+.chat-msg.ai code { background: #e5e7eb; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+.chat-welcome { text-align: center; color: var(--sub); font-size: .82em; padding: 40px 20px; }
+.chat-welcome .w-icon { font-size: 2.5em; margin-bottom: 12px; display: block; }
+.chat-welcome .w-title { font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.chat-input-wrap { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid var(--border); background: #fafafa; }
+.chat-input-wrap textarea {
+  flex: 1; border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px;
+  font-size: .8em; font-family: inherit; color: var(--text); outline: none; resize: none;
+  background: #fff; line-height: 1.5; min-height: 44px; max-height: 100px;
+}
+.chat-input-wrap textarea:focus { border-color: var(--accent); }
+.chat-input-wrap textarea::placeholder { color: #c0c0c8; }
+.btn-chat {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, #5865f2, #8b5cf6); border: 0; color: #fff;
+  font-size: 1.1em; cursor: pointer; transition: all .2s;
+  box-shadow: 0 4px 14px rgba(88,101,242,.3);
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-chat:hover { transform: scale(1.06); opacity: .95; }
+.btn-chat:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.btn-chat svg { width: 18px; height: 18px; }
+.typing-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #86868b; animation: typing 1.4s infinite; margin: 0 2px; }
+.typing-dot:nth-child(2) { animation-delay: .2s; } .typing-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes typing { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Toast */
-.toast {
-  position: fixed; top: 72px; left: 50%; transform: translateX(-50%);
-  background: #1d1d1f; color: #fff; padding: 10px 22px;
-  border-radius: 20px; font-size: .76em; font-weight: 500;
-  z-index: 999; opacity: 0; pointer-events: none;
-  transition: opacity .35s; letter-spacing: -.1px;
-}
-.toast.show { opacity: 1; }
-
-.footer {
-  text-align: center; padding: 32px 24px 40px;
-  font-size: .66em; color: #b0b0b8; letter-spacing: -.1px;
-}
+.footer { text-align: center; padding: 32px 24px 40px; font-size: .66em; color: #b0b0b8; letter-spacing: -.1px; }
 
 @media (max-width: 768px) {
   .main { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 2em; }
+  .hero h1 { font-size: 1.3em; }
   .card-grid { grid-template-columns: 1fr; }
-  .ai-panel iframe { min-height: 500px; }
+  .chat-panel { height: 500px; }
 }
 </style>
 </head>
 <body>
-
-<div class="toast" id="toast">指令已复制 ✓ 请粘贴到右侧 AI 对话框</div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -191,7 +138,7 @@ body {
 
 <section class="hero">
   <h1>公考新媒体文案助手</h1>
-  <p style="font-size:.82em;color:var(--sub);margin-top:4px">专为公考机构打造的新媒体内容引擎</p>
+  <p>专为公考机构打造的新媒体内容引擎</p>
 </section>
 
 <div class="main">
@@ -199,91 +146,56 @@ body {
   <!-- 左侧 -->
   <div>
     <div class="section-title">快捷指令</div>
-
     <div class="card-grid">
-      <!-- 1. 小红书筛岗 -->
-      <div class="card" onclick="send('写一篇小红书帖子，关于江苏省考筛岗，目标人群是应届毕业生，要有共鸣感和信息差钩子',this)">
+      <div class="card" onclick="sendPreset('写一篇小红书帖子，关于江苏省考筛岗，目标人群应届毕业生，要有共鸣感和信息差钩子',this)">
         <div class="c-icon-wrap c-icon-red">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <span class="c-tag tag-red">热门</span>
         <div class="c-name">筛岗共鸣帖</div>
-        <div class="c-desc">信息差钩子 · 选岗焦虑 · 应届生视角</div>
+        <div class="c-desc">信息差钩子 · 选岗焦虑 · 应届视角</div>
       </div>
-
-      <!-- 2. 小红书选岗纠结 -->
-      <div class="card" onclick="send('写一篇小红书帖子，关于怎么对比两个公务员岗位做选择，体现纠结心理和最终解决方法',this)">
+      <div class="card" onclick="sendPreset('写一篇小红书帖子，关于怎么对比两个公务员岗位做选择，体现纠结心理和最终解决方法',this)">
         <div class="c-icon-wrap c-icon-blue">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="15" y2="9"/><circle cx="12" cy="12" r="1"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="15" y2="9"/></svg>
         </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">选岗纠结帖</div>
         <div class="c-desc">两岗难取舍 · 情感共鸣 · 理性决策</div>
       </div>
-
-      <!-- 3. 抖音脚本 -->
-      <div class="card" onclick="send('写一个40秒抖音视频脚本，主题是考公筛岗信息差，90%的人第一步就漏了。要有画面描述+旁白+发布文案',this)">
+      <div class="card" onclick="sendPreset('写一个40秒抖音视频脚本，主题是考公筛岗信息差，90%的人第一步就漏了。要有画面描述+旁白+发布文案',this)">
         <div class="c-icon-wrap c-icon-purple">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
         </div>
         <span class="c-tag tag-purple">抖音</span>
         <div class="c-name">筛岗视频脚本</div>
         <div class="c-desc">快节奏 · 3秒钩子 · 数据冲击</div>
       </div>
-
-      <!-- 4. 视频号旁白 -->
-      <div class="card" onclick="send('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格，引发转发',this)">
+      <div class="card" onclick="sendPreset('写一个55秒视频号旁白，主题是备考路上的焦虑和自我调节，利他温暖风格，引发转发',this)">
         <div class="c-icon-wrap c-icon-green">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
         </div>
         <span class="c-tag tag-purple">视频号</span>
         <div class="c-name">备考情感旁白</div>
         <div class="c-desc">温暖叙事 · 利他收尾 · 转发驱动</div>
       </div>
-
-      <!-- 5. 引流评论 -->
-      <div class="card" onclick="send('帮我写5条小红书评论区引流话术，在考公相关帖子下自然引起注意，不直接导流但要让人想点进主页',this)">
+      <div class="card" onclick="sendPreset('帮我写5条小红书评论区引流话术，在考公相关帖子下自然引起注意，不直接导流但要让人想点进主页',this)">
         <div class="c-icon-wrap c-icon-amber">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">评论区引流</div>
         <div class="c-desc">自然话术 · 干货留人 · 主页导流</div>
       </div>
-
-      <!-- 6. ABC三类科普 -->
-      <div class="card" onclick="send('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别、薪资对比和选岗策略，数据要硬核但表达要通俗',this)">
+      <div class="card" onclick="sendPreset('写一篇小红书帖子，介绍江苏省考ABC三类考试的区别、薪资对比和选岗策略，数据要硬核但表达要通俗',this)">
         <div class="c-icon-wrap c-icon-teal">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <span class="c-tag tag-blue">小红书</span>
         <div class="c-name">ABC三类科普</div>
         <div class="c-desc">薪资数据 · 考试区别 · 收藏实用</div>
       </div>
     </div>
-
-    <div class="section-title">自定义指令</div>
-    <div class="prompt-box">
-      <textarea id="customPrompt" rows="1" placeholder="输入自定义需求，或点击上方卡片..."></textarea>
-      <button class="btn-send" onclick="copyPrompt()" title="复制并发送">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-      </button>
-    </div>
-
     <div class="rules">
       <h4>合规速查</h4>
       <div class="rules-row">
@@ -297,11 +209,23 @@ body {
     </div>
   </div>
 
-  <!-- 右侧 -->
+  <!-- 右侧：DeepSeek 对话 -->
   <div>
     <div class="section-title">AI 对话</div>
-    <div class="ai-panel">
-      <iframe src="https://doubao.com/bot/f4x0UZdQ?q=你好，请介绍一下你的功能" frameborder="0" allow="clipboard-write"></iframe>
+    <div class="chat-panel">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-welcome" id="chatWelcome">
+          <span class="w-icon">✨</span>
+          <div class="w-title">公考新媒体文案助手</div>
+          <div>点击左侧快捷指令，或直接输入你的需求</div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <textarea id="chatInput" rows="1" placeholder="输入需求，或点击左侧快捷指令..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+        <button class="btn-chat" id="btnSend" onclick="sendMessage()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -310,32 +234,126 @@ body {
 <div class="footer">AI 智能内容引擎 · 平台规则 2026 · 仅供机构内部使用</div>
 
 <script>
-function send(text, el) {
+const API_KEY = 'sk-0541b3112cd44ec18041c235d380affc';
+const API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+const SYSTEM_PROMPT = `你是公考培训机构的新媒体内容专家，精通小红书、抖音、微信视频号的流量规则和爆款逻辑。
+
+## 你的能力
+1. 生成小红书帖子（标题15字内+正文+标签+封面建议）
+2. 生成30-60秒抖音视频脚本（画面描述+时间轴+旁白+发布文案）
+3. 生成50-60秒视频号旁白（画面描述+讲述文案+发布文案）
+4. 自动规避各平台2026年违禁词
+
+## 平台规则（必须遵守）
+- 禁止绝对词：最、第一、顶级、100%、史上、唯一
+- 禁止保证词：包过、保过、稳了、肯定上岸
+- 禁止导流词：加微信、私信领取、扣1、关注领取、联系我
+- 薪资数据标注"基于公开信息估算，仅供参考"
+- AI生成内容需标注"AI辅助创作"
+- 不出现"豆包""DeepSeek"等AI品牌名称
+
+## 爆款公式
+- 小红书：个人经历+痛点共鸣+具体数据+自然主页引导
+- 抖音：痛点提问(前3秒)+信息差展示+解决方案+行动引导
+- 视频号：真诚场景+情绪共鸣+利他传递+转发引导
+
+## 输出格式
+【标题】xxx
+【正文】xxx（含emoji和短段落）
+【封面建议】xxx
+【标签】xxx
+（如果是视频脚本，额外包含画面描述、时间轴、旁白、发布文案）
+
+## 知识背景
+- 江苏省考分ABC三类：A综合管理/B行政执法/C乡镇基层
+- 苏南薪资高于苏北，全包年薪苏州22-28万、南京20-25万、宿迁12-15万
+- 2026年全省公务员7300+岗位、事业单位1000+岗位、教师编不断更新`;
+
+let messages = [{ role: 'system', content: SYSTEM_PROMPT }];
+
+function sendPreset(text, el) {
   if (el) { el.style.transform = 'scale(.97)'; setTimeout(function(){ el.style.transform = ''; }, 200); }
-  document.getElementById('customPrompt').value = text;
-  copyPrompt();
+  document.getElementById('chatInput').value = text;
+  sendMessage();
 }
 
-function copyPrompt() {
-  var text = document.getElementById('customPrompt').value.trim();
-  if (!text) { showToast('请先选择快捷指令或输入自定义内容'); return; }
-  navigator.clipboard.writeText(text).then(function() {
-    showToast('指令已复制 ✓ 请点击右侧 AI 对话框粘贴发送');
-  }).catch(function() {
-    prompt('请手动复制指令：', text);
-  });
+async function sendMessage() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+
+  document.getElementById('chatWelcome').style.display = 'none';
+  var btn = document.getElementById('btnSend');
+  btn.disabled = true;
+
+  // Add user message
+  addMessage(text, 'user');
+  messages.push({ role: 'user', content: text });
+  input.value = '';
+
+  // Show typing
+  var typingId = addTyping();
+
+  try {
+    var res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_KEY },
+      body: JSON.stringify({ model: 'deepseek-v4-pro', messages: messages, max_tokens: 3000, temperature: 0.8 })
+    });
+    var data = await res.json();
+    removeTyping(typingId);
+    var reply = data.choices[0].message.content;
+    addMessage(reply, 'ai');
+    messages.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    addMessage('抱歉，生成失败，请重试。', 'ai');
+  }
+  btn.disabled = false;
+  scrollBottom();
 }
 
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2500);
+function addMessage(text, role) {
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  // Simple markdown: bold and code blocks
+  var html = text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>')
+    .replace(/```([\s\S]*?)```/g, '<pre>$1</pre>')
+    .replace(/`(.+?)`/g, '<code>$1</code>');
+  div.innerHTML = html;
+  document.getElementById('chatMessages').appendChild(div);
+  scrollBottom();
 }
 
-document.getElementById('customPrompt').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { copyPrompt(); }
-});
+function addTyping() {
+  var div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.id = 'typing-' + Date.now();
+  div.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  document.getElementById('chatMessages').appendChild(div);
+  scrollBottom();
+  return div.id;
+}
 
+function removeTyping(id) {
+  var el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function scrollBottom() {
+  var mc = document.getElementById('chatMessages');
+  setTimeout(function() { mc.scrollTop = mc.scrollHeight; }, 50);
+}
+
+// Keep conversation manageable
+setInterval(function() {
+  if (messages.length > 20) {
+    messages = [messages[0], ...messages.slice(-18)];
+  }
+}, 30000);
 </script>
 
 </body>
