@@ -345,7 +345,9 @@ async function sendMessage() {
     });
     var data = await res.json();
     removeTyping(typingId);
-    var reply = data.choices[0].message.content;
+    var reply = data.choices[0].message.content || data.choices[0].message.reasoning_content || '';
+    if (!reply && data.choices[0].message.reasoning_content) { reply = data.choices[0].message.reasoning_content; }
+    if (!reply) reply = '（生成失败，请重试）';
     addMessage(reply, 'ai');
     messages.push({ role: 'assistant', content: reply });
   } catch(e) {
