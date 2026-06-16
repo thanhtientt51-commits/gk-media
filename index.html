@@ -87,37 +87,7 @@ body {
   background: var(--card); border-radius: 20px; border: 1px solid var(--border);
   box-shadow: var(--shadow); display: flex; flex-direction: column; height: 100%; overflow: hidden;
 }
-.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
-.chat-msg { max-width: 90%; padding: 16px 20px; border-radius: 16px; font-size: .85em; line-height: 1.7; animation: fadeIn .3s ease; }
-.chat-msg.user { align-self: flex-end; background: linear-gradient(135deg, #5865f2, #8b5cf6); color: #fff; border-bottom-right-radius: 4px; }
-.chat-msg.ai { align-self: flex-start; background: #f3f4f6; color: var(--text); border-bottom-left-radius: 4px; }
-.chat-msg.ai pre { background: #e5e7eb; border-radius: 8px; padding: 12px; overflow-x: auto; font-size: .85em; margin: 8px 0; white-space: pre-wrap; }
-.chat-msg.ai code { background: #e5e7eb; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
-.chat-welcome { text-align: center; color: var(--sub); font-size: .82em; padding: 40px 20px; }
-.chat-welcome .w-icon { font-size: 2.5em; margin-bottom: 12px; display: block; }
-.chat-welcome .w-title { font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.chat-input-wrap { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid var(--border); background: #fafafa; }
-.chat-input-wrap textarea {
-  flex: 1; border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px;
-  font-size: .8em; font-family: inherit; color: var(--text); outline: none; resize: none;
-  background: #fff; line-height: 1.5; min-height: 44px; max-height: 100px;
-}
-.chat-input-wrap textarea:focus { border-color: var(--accent); }
-.chat-input-wrap textarea::placeholder { color: #c0c0c8; }
-.btn-chat {
-  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, #5865f2, #8b5cf6); border: 0; color: #fff;
-  font-size: 1.1em; cursor: pointer; transition: all .2s;
-  box-shadow: 0 4px 14px rgba(88,101,242,.3);
-  display: flex; align-items: center; justify-content: center;
-}
-.btn-chat:hover { transform: scale(1.06); opacity: .95; }
-.btn-chat:disabled { opacity: .4; cursor: not-allowed; transform: none; }
-.btn-chat svg { width: 18px; height: 18px; }
-.typing-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #86868b; animation: typing 1.4s infinite; margin: 0 2px; }
-.typing-dot:nth-child(2) { animation-delay: .2s; } .typing-dot:nth-child(3) { animation-delay: .4s; }
-@keyframes typing { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.chat-panel iframe { border: 0; border-radius: 20px; }
 
 .footer { text-align: center; padding: 32px 24px 40px; font-size: .66em; color: #b0b0b8; letter-spacing: -.1px; }
 
@@ -251,23 +221,11 @@ body {
     </div>
   </div>
 
-  <!-- 右侧：DeepSeek 对话 -->
+  <!-- 右侧：豆包AI -->
   <div>
     <div class="section-title">AI 对话</div>
     <div class="chat-panel">
-      <div class="chat-messages" id="chatMessages">
-        <div class="chat-welcome" id="chatWelcome">
-          <span class="w-icon">✨</span>
-          <div class="w-title">公考新媒体文案助手</div>
-          <div>点击左侧快捷指令，或直接输入你的需求</div>
-        </div>
-      </div>
-      <div class="chat-input-wrap">
-        <textarea id="chatInput" rows="1" placeholder="输入需求，或点击左侧快捷指令..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
-        <button class="btn-chat" id="btnSend" onclick="sendMessage()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>
+      <iframe src="https://doubao.com/bot/f4x0UZdQ" frameborder="0" allow="clipboard-write" style="width:100%;height:100%;border:0"></iframe>
     </div>
   </div>
 
@@ -276,128 +234,20 @@ body {
 <div class="footer">AI 智能内容引擎 · 平台规则 2026 · 仅供机构内部使用</div>
 
 <script>
-const API_KEY = 'sk-0541b3112cd44ec18041c235d380affc';
-const API_URL = 'https://api.deepseek.com/v1/chat/completions';
-
-const SYSTEM_PROMPT = `你是公考培训机构的新媒体内容专家，精通小红书、抖音、微信视频号的流量规则和爆款逻辑。
-
-## 你的能力
-1. 生成小红书帖子（标题15字内+正文+标签+封面建议）
-2. 生成30-60秒抖音视频脚本（画面描述+时间轴+旁白+发布文案）
-3. 生成50-60秒视频号旁白（画面描述+讲述文案+发布文案）
-4. 自动规避各平台2026年违禁词
-
-## 平台规则（必须遵守）
-- 禁止绝对词：最、第一、顶级、100%、史上、唯一
-- 禁止保证词：包过、保过、稳了、肯定上岸
-- 禁止导流词：加微信、私信领取、扣1、关注领取、联系我
-- 薪资数据标注"基于公开信息估算，仅供参考"
-- AI生成内容需标注"AI辅助创作"
-- 不出现"豆包""DeepSeek"等AI品牌名称
-
-## 爆款公式
-- 小红书：个人经历+痛点共鸣+具体数据+自然主页引导
-- 抖音：痛点提问(前3秒)+信息差展示+解决方案+行动引导
-- 视频号：真诚场景+情绪共鸣+利他传递+转发引导
-
-## 输出格式
-【标题】xxx
-【正文】xxx（含emoji和短段落）
-【封面建议】xxx
-【标签】xxx
-（如果是视频脚本，额外包含画面描述、时间轴、旁白、发布文案）
-
-## 知识背景
-- 江苏省考分ABC三类：A综合管理/B行政执法/C乡镇基层
-- 苏南薪资高于苏北，全包年薪苏州22-28万、南京20-25万、宿迁12-15万
-- 2026年全省公务员7300+岗位、事业单位1000+岗位、教师编不断更新`;
-
-let messages = [{ role: 'system', content: SYSTEM_PROMPT }];
-
 function sendPreset(text, el) {
   if (el) { el.style.transform = 'scale(.97)'; setTimeout(function(){ el.style.transform = ''; }, 200); }
-  document.getElementById('chatInput').value = text;
-  sendMessage();
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('指令已复制 ✓ 请粘贴到右侧豆包对话框发送');
+  }).catch(function() {
+    prompt('请手动复制指令（Ctrl+C）：', text);
+  });
 }
 
-async function sendMessage() {
-  var input = document.getElementById('chatInput');
-  var text = input.value.trim();
-  if (!text) return;
-
-  document.getElementById('chatWelcome').style.display = 'none';
-  var btn = document.getElementById('btnSend');
-  btn.disabled = true;
-
-  // Add user message
-  addMessage(text, 'user');
-  messages.push({ role: 'user', content: text });
-  input.value = '';
-
-  // Show typing
-  var typingId = addTyping();
-
-  try {
-    var res = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_KEY },
-      body: JSON.stringify({ model: 'deepseek-v4-pro', messages: messages, max_tokens: 3000, temperature: 0.8 })
-    });
-    var data = await res.json();
-    removeTyping(typingId);
-    var reply = data.choices[0].message.content || data.choices[0].message.reasoning_content || '';
-    if (!reply && data.choices[0].message.reasoning_content) { reply = data.choices[0].message.reasoning_content; }
-    if (!reply) reply = '（生成失败，请重试）';
-    addMessage(reply, 'ai');
-    messages.push({ role: 'assistant', content: reply });
-  } catch(e) {
-    removeTyping(typingId);
-    addMessage('抱歉，生成失败，请重试。', 'ai');
-  }
-  btn.disabled = false;
-  scrollBottom();
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2500);
 }
-
-function addMessage(text, role) {
-  var div = document.createElement('div');
-  div.className = 'chat-msg ' + role;
-  // Simple markdown: bold and code blocks
-  var html = text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n/g, '<br>')
-    .replace(/```([\s\S]*?)```/g, '<pre>$1</pre>')
-    .replace(/`(.+?)`/g, '<code>$1</code>');
-  div.innerHTML = html;
-  document.getElementById('chatMessages').appendChild(div);
-  scrollBottom();
-}
-
-function addTyping() {
-  var div = document.createElement('div');
-  div.className = 'chat-msg ai';
-  div.id = 'typing-' + Date.now();
-  div.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
-  document.getElementById('chatMessages').appendChild(div);
-  scrollBottom();
-  return div.id;
-}
-
-function removeTyping(id) {
-  var el = document.getElementById(id);
-  if (el) el.remove();
-}
-
-function scrollBottom() {
-  var mc = document.getElementById('chatMessages');
-  setTimeout(function() { mc.scrollTop = mc.scrollHeight; }, 50);
-}
-
-// Keep conversation manageable
-setInterval(function() {
-  if (messages.length > 20) {
-    messages = [messages[0], ...messages.slice(-18)];
-  }
-}, 30000);
 </script>
 
 </body>
