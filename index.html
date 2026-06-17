@@ -87,7 +87,7 @@ body {
   background: var(--card); border-radius: 20px; border: 1px solid var(--border);
   box-shadow: var(--shadow); display: flex; flex-direction: column; height: 100%; overflow: hidden;
 }
-.chat-panel iframe { border: 0; border-radius: 20px; }
+.chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px}.chat-msg{max-width:90%;padding:14px 18px;border-radius:16px;font-size:.8em;line-height:1.7;animation:fadeIn .3s ease}.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#5865f2,#8b5cf6);color:#fff;border-bottom-right-radius:4px}.chat-msg.ai{align-self:flex-start;background:#f3f4f6;color:#1d1d1f;border-bottom-left-radius:4px}.chat-welcome{text-align:center;color:#86868b;font-size:.82em;padding:40px 20px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}.chat-welcome .w-icon{font-size:2.5em;margin-bottom:12px;display:block}.chat-welcome .w-title{font-weight:700;color:#1d1d1f;margin-bottom:6px;font-size:1em}.chat-input-wrap{display:flex;gap:10px;padding:16px 20px;border-top:1px solid rgba(0,0,0,.06);background:#fafafa}.chat-input-wrap textarea{flex:1;border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:12px 16px;font-size:.8em;font-family:inherit;outline:none;resize:none;background:#fff;line-height:1.5;min-height:44px;max-height:100px}.chat-input-wrap textarea:focus{border-color:#5865f2}.btn-chat{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#5865f2,#8b5cf6);border:0;color:#fff;font-size:1.1em;cursor:pointer;box-shadow:0 4px 14px rgba(88,101,242,.3);display:flex;align-items:center;justify-content:center}.btn-chat svg{width:18px;height:18px}.btn-chat:disabled{opacity:.4;cursor:not-allowed}.typing-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#86868b;animation:typing 1.4s infinite;margin:0 2px}.typing-dot:nth-child(2){animation-delay:.2s}.typing-dot:nth-child(3){animation-delay:.4s}@keyframes typing{0%,60%,100%{opacity:.3}30%{opacity:1}}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 .footer { text-align: center; padding: 32px 24px 40px; font-size: .66em; color: #b0b0b8; letter-spacing: -.1px; }
 
@@ -221,11 +221,21 @@ body {
     </div>
   </div>
 
-  <!-- 右侧：豆包AI -->
+  <!-- 右侧：AIAI -->
   <div>
     <div class="section-title">AI 对话</div>
     <div class="chat-panel">
-      <iframe src="https://doubao.com/bot/f4x0UZdQ" frameborder="0" allow="clipboard-write" style="width:100%;height:100%;border:0"></iframe>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-welcome" id="chatWelcome">
+          <span class="w-icon">✨</span>
+          <div class="w-title">公考新媒体文案助手</div>
+          <div>点击左侧快捷指令，或直接输入你的需求</div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <textarea id="chatInput" rows="1" placeholder="输入需求，或点击左侧快捷指令..." onkeydown="if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
+        <button class="btn-chat" id="btnSend" onclick="sendMessage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
     </div>
   </div>
 
@@ -237,7 +247,7 @@ body {
 function sendPreset(text, el) {
   if (el) { el.style.transform = 'scale(.97)'; setTimeout(function(){ el.style.transform = ''; }, 200); }
   navigator.clipboard.writeText(text).then(function() {
-    showToast('指令已复制 ✓ 请粘贴到右侧豆包对话框发送');
+    showToast('指令已复制 ✓ 请粘贴到右侧AI对话框发送');
   }).catch(function() {
     prompt('请手动复制指令（Ctrl+C）：', text);
   });
