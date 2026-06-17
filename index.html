@@ -244,13 +244,70 @@ body {
 <div class="footer">AI 智能内容引擎 · 平台规则 2026 · 仅供机构内部使用</div>
 
 <script>
+const API_KEY = 'sk-0541b3112cd44ec18041c235d380affc';
+const API_URL = 'https://api.deepseek.com/chat/completions';
+
 function sendPreset(text, el) {
   if (el) { el.style.transform = 'scale(.97)'; setTimeout(function(){ el.style.transform = ''; }, 200); }
-  navigator.clipboard.writeText(text).then(function() {
-    showToast('指令已复制 ✓ 请粘贴到右侧AI对话框发送');
-  }).catch(function() {
-    prompt('请手动复制指令（Ctrl+C）：', text);
-  });
+  document.getElementById('chatInput').value = text;
+  sendMessage();
+}
+
+var messages = [{role: 'system', content: '你是公考培训机构的新媒体内容专家，精通小红书、抖音、微信视频号的流量规则和爆款逻辑。生成文案时自动规避平台违禁词。输出格式：标题15字内、正文含emoji短段落、标签5-10个、封面建议。'}];
+
+async function sendMessage() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  document.getElementById('chatWelcome').style.display = 'none';
+  var btn = document.getElementById('btnSend');
+  btn.disabled = true;
+  addMessage(text, 'user');
+  messages.push({role: 'user', content: text});
+  input.value = '';
+  var tid = addTyping();
+  try {
+    var res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_KEY},
+      body: JSON.stringify({model: 'deepseek-chat', messages: messages, max_tokens: 3000, temperature: 0.7})
+    });
+    var data = await res.json();
+    removeTyping(tid);
+    var reply = data.choices[0].message.content || '';
+    addMessage(reply, 'ai');
+    messages.push({role: 'assistant', content: reply});
+  } catch(e) {
+    removeTyping(tid);
+    addMessage('生成失败，请重试', 'ai');
+  }
+  btn.disabled = false;
+  scrollBottom();
+}
+
+function addMessage(text, role) {
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.innerHTML = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  document.getElementById('chatMessages').appendChild(div);
+  scrollBottom();
+}
+
+function addTyping() {
+  var div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.id = 'typing-' + Date.now();
+  div.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+  document.getElementById('chatMessages').appendChild(div);
+  scrollBottom();
+  return div.id;
+}
+
+function removeTyping(id) { var el = document.getElementById(id); if (el) el.remove(); }
+
+function scrollBottom() {
+  var mc = document.getElementById('chatMessages');
+  setTimeout(function() { mc.scrollTop = mc.scrollHeight; }, 50);
 }
 
 function showToast(msg) {
@@ -259,6 +316,3 @@ function showToast(msg) {
   setTimeout(function(){ t.classList.remove('show'); }, 2500);
 }
 </script>
-
-</body>
-</html>
